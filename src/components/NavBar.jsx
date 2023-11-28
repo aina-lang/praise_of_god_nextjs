@@ -1,5 +1,5 @@
-
-import React from 'react'
+import React, { useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import {
     Navbar, NavbarBrand, NavbarContent,
     NavbarItem, NavbarMenuToggle, NavbarMenu,
@@ -8,7 +8,14 @@ import {
     Button
 } from "@nextui-org/react";
 
+import HamburgerBtn from './HumbergerBtn';
 function NavBar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <div className="fixed top-0 left-0 w-full p-10 text-white">
             <Navbar className="w-full  flex justify-between">
@@ -18,34 +25,51 @@ function NavBar() {
                 <NavbarContent className="hidden sm:flex gap-4" justify="center">
                     <NavbarItem>
                         <Link color="foreground" href="#">
-                            Features
+                            A propos
                         </Link>
                     </NavbarItem>
                     <NavbarItem isActive>
                         <Link href="#" aria-current="page">
-                            Customers
+                            Oeuvre
                         </Link>
                     </NavbarItem>
                     <NavbarItem>
                         <Link color="foreground" href="#">
-                            Integrations
+                            Gallerie
                         </Link>
                     </NavbarItem>
                 </NavbarContent>
-                <NavbarContent justify="end">
+                <NavbarContent justify="end" className=' flex'>
                     <NavbarItem className="hidden lg:flex">
-                        <Link href="#">Login</Link>
+                        <Link href="#">Contacter nous</Link>
                     </NavbarItem>
                     <NavbarItem>
                         <Button as={Link} color="primary" href="#" variant="flat">
                             Sign Up
                         </Button>
                     </NavbarItem>
+                    <HamburgerBtn isOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)} />
                 </NavbarContent>
+                {/* <NavbarMenuToggle> */}
+
+                {/* </NavbarMenuToggle> */}
+                {menuOpen && <div className="w-screen flex  fixed  bg-gray-red flex-col h-[40%] left-0 top-0">
+                    <Link color="foreground" className='p-5 ' href="#">
+                        A propos
+                    </Link>
+                    <Link href="#" className='p-5 ' aria-current="page">
+                        Oeuvre
+                    </Link>
+                    <Link color="foreground" className='p-5 ' href="#">
+                        Gallerie
+                    </Link>
+                    <Link href="#" className='p-5 '>Contacter nous</Link>
+                </div>}
             </Navbar>
 
+
         </div>
-    )
+    );
 }
 
-export default NavBar
+export default NavBar;
