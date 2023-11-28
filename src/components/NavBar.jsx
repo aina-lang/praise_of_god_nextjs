@@ -39,35 +39,30 @@ function NavBar() {
                         </Link>
                     </NavbarItem>
                 </NavbarContent>
-                <NavbarContent justify="end" className=' flex'>
+                <NavbarContent justify="end" className='flex'>
                     <NavbarItem className="hidden lg:flex">
-                        <Link href="#">Contacter nous</Link>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Button as={Link} color="primary" href="#" variant="flat">
-                            Sign Up
-                        </Button>
+                        <Link href="#" className="">Contacter nous</Link>
                     </NavbarItem>
                     <HamburgerBtn isOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)} />
                 </NavbarContent>
                 {/* <NavbarMenuToggle> */}
 
                 {/* </NavbarMenuToggle> */}
-                {menuOpen && <div className="w-screen flex  fixed  bg-gray-red flex-col h-[40%] left-0 top-0">
-                    <Link color="foreground" className='p-5 ' href="#">
-                        A propos
-                    </Link>
-                    <Link href="#" className='p-5 ' aria-current="page">
-                        Oeuvre
-                    </Link>
-                    <Link color="foreground" className='p-5 ' href="#">
-                        Gallerie
-                    </Link>
-                    <Link href="#" className='p-5 '>Contacter nous</Link>
-                </div>}
+
             </Navbar>
 
-
+            {menuOpen && <div className="w-screen flex  fixed  bg-gray-200 flex-col h-[40%] left-0 top-0">
+                <Link color="foreground" className='p-5 ' href="#">
+                    A propos
+                </Link>
+                <Link href="#" className='p-5 ' aria-current="page">
+                    Oeuvre
+                </Link>
+                <Link color="foreground" className='p-5 ' href="#">
+                    Gallerie
+                </Link>
+                <Link href="#" className='p-5 '>Contacter nous</Link>
+            </div>}
         </div>
     );
 }
